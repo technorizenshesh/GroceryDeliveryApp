@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">GroceryDeliveryApp</string>
+    <string name="login">Login</string>
+    <string name="password">Enter Password</string>
+    <string name="email">Enter Email</string>
+    <string name="hello_worldRed"><![CDATA[<b><font color=#FF0000>Hello world!</font></b>]]></string>
+    <string name="by_continuing_i_confirm_that_i_have_read_and_agree_to_the_terms_and_conditions_and_privacy_policy">By continuing, I confirm that I have read and agree to the<font color='#1278C0'> Terms and Conditions</font> and <font color='#1278C0'>Privacy Policy.</font></string>
+    <string name="you_are_been_provided_an_unique_id_and_password_by_the_admin_please_enter_those_to_move_forward">You are been provided an UNIQUE ID and PASSWORD by the admin. Please enter those to move forward.</string>
+    <string name="api_key">AIzaSyCFB3_0jJQm20H2cPiVfANMjDhAmxlpUb8</string>
+    <string name="completed">Completed</string>
+    <string name="in_progress">In Progress</string>
+    <string name="new1">New</string>
+    <string name="all">All</string>
+    <string name="new_request">New Request</string>
+    <string name="home">Home</string>
+    <string name="notification">Notification</string>
+    <string name="order_details">ORDER DETAILS</string>
+    <string name="customer">Customer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Log Out</string>
+    <string name="first_name">Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="update">Update</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="order_received">Order Received</string>
+    <string name="orderreceived">OrderReceived</string>
+    <string name="delivery">DELIVERY</string>
+    <string name="get_signature">Get Signature</string>
+    <string name="customer_signature">Customer Signature</string>
+    <string name="signature_here">Signature Here -</string>
+    <string name="collect_cash">Collect Cash</string>
+    <string name="delivery_details">Delivery details</string>
+    <string name="go_to_home">Go To Home</string>
+    <string name="orders_details">Order Details</string>
+    <string name="please_wait">Please wait</string>
+    <string name="accept">Accept</string>
+    <string name="wanna_accept">Are you sure you want to accept this delivery?</string>
+    <string name="company">Company</string>
+    <string name="default_notification_channel_id">1</string>
+    <string name="order_picked">Order Picked</string>
+    <string name="are_you_sure_picked_order">Are you sure you picked order.</string>
+    <string name="order_delivered">Order Delivered</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="permission_denied_boo">Permission Denied</string>
+    <string name="order_deliver">Order Deliver</string>
+
+</resources>

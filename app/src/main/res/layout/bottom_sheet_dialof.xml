@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/_180sdp"
+    app:behavior_hideable="false"
+    android:background="@android:color/transparent"
+    app:behavior_peekHeight="@dimen/_80sdp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:id="@+id/botttomSheet"
+    >
+    <LinearLayout
+        android:id="@+id/rlDriver"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_230sdp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:background="@drawable/rec_top_40"
+        android:padding="@dimen/_5sdp"
+        >
+
+        <View
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_3sdp"
+            android:background="@color/black"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            >
+
+            <TextView
+                android:id="@+id/tvSuperMarket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jain Supermarket"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/_16sdp" />
+
+            <TextView
+                android:id="@+id/tvShopAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSuperMarket"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                android:drawablePadding="@dimen/_5sdp"
+                android:ems="16"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="2 New Nehru Nagar Indore 457415, Madhya Pradesh"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/ivCall"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_below="@id/tvSuperMarket"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/montserrat_semibold"
+                android:src="@drawable/ic_call" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/gray"
+                android:layout_below="@+id/tvShopAddress"
+                android:layout_marginTop="@dimen/_10sdp"
+                />
+
+            <RelativeLayout
+                android:layout_below="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                >
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    app:cardCornerRadius="@dimen/_8sdp"
+                    >
+                    <ImageView
+                        android:id="@+id/iv_product"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@color/light_gray" /></androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tvShopName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_toRightOf="@+id/cv_product"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Your order has been delivered"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/tvQuantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvShopName"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_toRightOf="@+id/cv_product"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="2 minutes ago"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/_13sdp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPicked"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:text="@string/order_picked"
+                android:background="@drawable/button_bg"
+                android:layout_weight=".5"
+                android:textSize="@dimen/_12sdp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDeliver"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:visibility="gone"
+                android:text="@string/order_deliver"
+                android:background="@drawable/button_bg"
+                android:layout_weight=".5"
+                android:textSize="@dimen/_12sdp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
