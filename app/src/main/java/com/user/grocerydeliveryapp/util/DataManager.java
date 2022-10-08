@@ -35,7 +35,6 @@ public class DataManager {
 
     private static final DataManager ourInstance = new DataManager();
 
-
     public static DataManager getInstance() {
             return ourInstance;
         }
@@ -86,14 +85,13 @@ public class DataManager {
             }
 
         }
-/*
 
+/*
         public SignupModel getUserData(Context context) {
             SignupModel userData = new Gson().fromJson(SessionManager.readString(context, Constant.USER_INFO, ""), SignupModel.class);
             return userData;
         }
 */
-
 
         public static String getRealPathFromURI(Activity activity, Uri contentUri) {
             //TODO: get realpath from uri

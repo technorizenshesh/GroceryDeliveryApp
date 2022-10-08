@@ -5,8 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -51,6 +59,41 @@ public class LoginAct extends AppCompatActivity {
 
       binding = DataBindingUtil.setContentView(this,R.layout.activity_login);
 
+      SpannableString SpanString = new SpannableString(
+                "By continuing, I confirm that I have read and agree to the Terms and Conditions and Privacy Policy");
+
+        ClickableSpan teremsAndCondition = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+                String url = "https://ybb.qqn.mybluehost.me/_GROCERY/policy/term_and_conditions.html";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+
+            }
+        };
+
+        ClickableSpan privacy = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+                String url = "https://ybb.qqn.mybluehost.me/_GROCERY/policy/privacy_policy.html";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        };
+
+      SpanString.setSpan(teremsAndCondition, 59, 79, 0);
+      SpanString.setSpan(privacy, 84, 98, 0);
+      SpanString.setSpan(new ForegroundColorSpan(Color.BLUE), 59, 79, 0);
+      SpanString.setSpan(new ForegroundColorSpan(Color.BLUE), 84, 98, 0);
+      SpanString.setSpan(new UnderlineSpan(), 59, 79, 0);
+      SpanString.setSpan(new UnderlineSpan(), 84, 98, 0);
+
+      binding.tvSpanString.setText(SpanString);
+      binding.tvSpanString.setMovementMethod(LinkMovementMethod.getInstance());
+      binding.tvSpanString.setHighlightColor(Color.TRANSPARENT);
+
       apiInterface = ApiClient.getClient().create(GroceryDeliveryInterface.class);
 
       getToken();
@@ -90,7 +133,6 @@ public class LoginAct extends AppCompatActivity {
         map.put("email",strEmail);
         map.put("password",strPassword);
         map.put("register_id",deviceToken);
-
         Call<SuccessResLogin> call = apiInterface.login(map);
         call.enqueue(new Callback<SuccessResLogin>() {
             @Override
@@ -143,6 +185,5 @@ public class LoginAct extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
 
 }

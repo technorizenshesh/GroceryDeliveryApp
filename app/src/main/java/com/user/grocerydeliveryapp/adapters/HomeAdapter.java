@@ -55,7 +55,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.SelectTimeView
 
         TextView tvNew = holder.itemView.findViewById(R.id.tvNew);
 
+        TextView tvPrice = holder.itemView.findViewById(R.id.tvPrice);
+
         TextView tvInProgress = holder.itemView.findViewById(R.id.tvInProgress);
+
+        tvPrice.setText("$"+requestList.get(position).getPrice());
 
         if(requestList.get(position).getBookigStatus().equalsIgnoreCase("ACCEPTED_BY_ADMIN"))
         {

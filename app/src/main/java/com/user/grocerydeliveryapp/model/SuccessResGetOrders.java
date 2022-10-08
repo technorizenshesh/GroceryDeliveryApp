@@ -231,6 +231,12 @@ public class SuccessResGetOrders implements Serializable {
         @SerializedName("address_id")
         @Expose
         public String addressId;
+        @SerializedName("notification_status")
+        @Expose
+        public String notificationStatus;
+        @SerializedName("signature_image")
+        @Expose
+        public String signatureImage;
         @SerializedName("product_name")
         @Expose
         public String productName;
@@ -270,9 +276,12 @@ public class SuccessResGetOrders implements Serializable {
         @SerializedName("company_long")
         @Expose
         public String companyLong;
+        @SerializedName("company_mobile")
+        @Expose
+        public String companyMobile;
         @SerializedName("driver_details")
         @Expose
-        public DriverDetails driverDetails;
+        public Object driverDetails;
         @SerializedName("user_details")
         @Expose
         public UserDetails userDetails;
@@ -347,6 +356,22 @@ public class SuccessResGetOrders implements Serializable {
 
         public void setAddressId(String addressId) {
             this.addressId = addressId;
+        }
+
+        public String getNotificationStatus() {
+            return notificationStatus;
+        }
+
+        public void setNotificationStatus(String notificationStatus) {
+            this.notificationStatus = notificationStatus;
+        }
+
+        public String getSignatureImage() {
+            return signatureImage;
+        }
+
+        public void setSignatureImage(String signatureImage) {
+            this.signatureImage = signatureImage;
         }
 
         public String getProductName() {
@@ -453,11 +478,19 @@ public class SuccessResGetOrders implements Serializable {
             this.companyLong = companyLong;
         }
 
-        public DriverDetails getDriverDetails() {
+        public String getCompanyMobile() {
+            return companyMobile;
+        }
+
+        public void setCompanyMobile(String companyMobile) {
+            this.companyMobile = companyMobile;
+        }
+
+        public Object getDriverDetails() {
             return driverDetails;
         }
 
-        public void setDriverDetails(DriverDetails driverDetails) {
+        public void setDriverDetails(Object driverDetails) {
             this.driverDetails = driverDetails;
         }
 

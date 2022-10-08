@@ -24,14 +24,15 @@
                 android:layout_gravity="end"
                 android:layout_marginRight="@dimen/_15sdp"
                 >
+
                 <ImageView
                     android:id="@+id/img_header"
                     android:layout_width="@dimen/_25sdp"
                     android:layout_height="@dimen/_25sdp"
-                    android:src="@drawable/ic_noti"
-                    android:padding="@dimen/_2sdp"
                     android:layout_centerVertical="true"
+                    android:padding="@dimen/_2sdp"
                     android:scaleType="centerInside"
+                    android:src="@drawable/ic_noti"
                     app:tint="@color/white" />
 
                 <TextView

@@ -21,9 +21,12 @@ import com.user.grocerydeliveryapp.retrofit.GroceryDeliveryInterface;
 import com.user.grocerydeliveryapp.util.DataManager;
 import com.user.grocerydeliveryapp.util.SharedPreferenceUtility;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -107,27 +110,42 @@ public class OrderAct extends AppCompatActivity {
         Map<String,String> map = new HashMap<>();
         map.put("order_id",strEmail);
         map.put("bookig_status","PROCESSING");
-        Call<SuccessResAcceptOrder> call = apiInterface.orderAccept(map);
-        call.enqueue(new Callback<SuccessResAcceptOrder>() {
+        Call<ResponseBody> call = apiInterface.orderAccept(map);
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<SuccessResAcceptOrder> call, Response<SuccessResAcceptOrder> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 DataManager.getInstance().hideProgressMessage();
+
                 try {
-                    SuccessResAcceptOrder data = response.body();
-                    if (data.status.equalsIgnoreCase("1")) {
+//                    SuccessResAddComment data = response.body();
+
+                    JSONObject jsonObject = new JSONObject(response.body().string());
+
+                    String data = jsonObject.getString("status");
+
+                    String message = jsonObject.getString("message");
+
+                    if (data.equals("1")) {
+
                         String dataResponse = new Gson().toJson(response.body());
+
                         Log.e("MapMap", "EDIT PROFILE RESPONSE" + dataResponse);
+
                         finish();
-                    } else if (data.status.equalsIgnoreCase("0")) {
-                        showToast(OrderAct.this, data.getMessage());
+
+                    } else if (data.equals("0")) {
+                        showToast(OrderAct.this,message);
                     }
                 } catch (Exception e) {
+                    finish();
+                    Log.d("TAG", "onResponse: "+e);
                     e.printStackTrace();
                 }
+
             }
 
             @Override
-            public void onFailure(Call<SuccessResAcceptOrder> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 call.cancel();
                 finish();
                 DataManager.getInstance().hideProgressMessage();

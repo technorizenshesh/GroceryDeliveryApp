@@ -91,7 +91,6 @@ public class TripDetail extends AppCompatActivity implements OnMapReadyCallback 
     TextView tvSuperMarket;
     CardView cvBack;
     private String status ="";
-
     private String result;
 
     @Override
@@ -224,28 +223,26 @@ public class TripDetail extends AppCompatActivity implements OnMapReadyCallback 
                 }
         );
 
+        ivPhone.setOnClickListener(v ->
+                {
 
-//        ivPhone.setOnClickListener(v ->
-//                {
+//                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+//                    callIntent.setData(Uri.parse("tel:"+requestModel.getUserDetails().getMobile()));//change the number
 
-////                    Intent callIntent = new Intent(Intent.ACTION_CALL);
-////                    callIntent.setData(Uri.parse("tel:"+requestModel.getUserDetails().getMobile()));//change the number
-//
-//                    if(status.equalsIgnoreCase("Accepted"))
-//                    {
-//                        Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "89347854854", null));
-//                        startActivity(callIntent);
-//                    }
-//                    else
-//                    {
-//                        Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", requestModel.getUserDetails().getMobile(), null));
-//                        startActivity(callIntent);
-//                    }
-//
-//                }
-//        );
+                    if(status.equalsIgnoreCase("PROCESSING"))
+                    {
+                        Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", requestModel.getCompanyMobile(), null));
+                        startActivity(callIntent);
+                    }
+                    else
+                    {
+                        Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", requestModel.getUserDetails().getMobile(), null));
+                        startActivity(callIntent);
+                    }
+
+                }
+        );
     }
-
 
     public void orderPicked(String strEmail)
     {
@@ -255,35 +252,46 @@ public class TripDetail extends AppCompatActivity implements OnMapReadyCallback 
         map.put("order_id",strEmail);
         map.put("bookig_status","PICKUP");
 
-        Call<SuccessResAcceptOrder> call = apiInterface.orderAccept(map);
-        call.enqueue(new Callback<SuccessResAcceptOrder>() {
+        Call<ResponseBody> call = apiInterface.orderAccept(map);
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<SuccessResAcceptOrder> call, Response<SuccessResAcceptOrder> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 DataManager.getInstance().hideProgressMessage();
+
                 try {
-                    SuccessResAcceptOrder data = response.body();
+//                    SuccessResAddComment data = response.body();
 
-                    if (data.status.equalsIgnoreCase("1")) {
+                    JSONObject jsonObject = new JSONObject(response.body().string());
+
+                    String data = jsonObject.getString("status");
+
+                    String message = jsonObject.getString("message");
+
+                    if (data.equals("1")) {
+
                         String dataResponse = new Gson().toJson(response.body());
-                        Log.e("MapMap", "EDIT PROFILE RESPONSE" + dataResponse);
-                        finish();
-                    } else if (data.status.equalsIgnoreCase("0")) {
-                        showToast(TripDetail.this, data.getMessage());
-                    }
 
+                        Log.e("MapMap", "EDIT PROFILE RESPONSE" + dataResponse);
+
+                        finish();
+
+                    } else if (data.equals("0")) {
+                        showToast(TripDetail.this,message);
+                    }
                 } catch (Exception e) {
+                    finish();
+                    Log.d("TAG", "onResponse: "+e);
                     e.printStackTrace();
                 }
             }
 
             @Override
-            public void onFailure(Call<SuccessResAcceptOrder> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 call.cancel();
                 DataManager.getInstance().hideProgressMessage();
             }
         });
     }
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

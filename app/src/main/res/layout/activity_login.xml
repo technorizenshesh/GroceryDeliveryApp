@@ -103,13 +103,13 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/tvSpanString"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_40sdp"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="@string/by_continuing_i_confirm_that_i_have_read_and_agree_to_the_terms_and_conditions_and_privacy_policy"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />

@@ -35,8 +35,16 @@ public interface GroceryDeliveryInterface {
     Call<SuccessResGetOrders> getRequest(@FieldMap Map<String, String> paramHashMap);
 
     @FormUrlEncoded
+    @POST("get_current_order_progress")
+    Call<SuccessResGetOrders> getProgressRequest(@FieldMap Map<String, String> paramHashMap);
+
+    @FormUrlEncoded
+    @POST("get_current_order_deliverd")
+    Call<SuccessResGetOrders> getCompletedRequest(@FieldMap Map<String, String> paramHashMap);
+
+    @FormUrlEncoded
     @POST("driver_accept_and_Cancel_order")
-    Call<SuccessResAcceptOrder> orderAccept(@FieldMap Map<String, String> paramHashMap);
+    Call<ResponseBody> orderAccept(@FieldMap Map<String, String> paramHashMap);
 
     @FormUrlEncoded
     @POST("get_all_order_driver")
@@ -59,5 +67,12 @@ public interface GroceryDeliveryInterface {
     @FormUrlEncoded
     @POST("getnotificationCount")
     Call<SuccessResGetNotificationCount> getNotificationCount(@FieldMap Map<String, String> paramHashMap);
+
+    @Multipart
+    @POST("driver_accept_and_Cancel_order")
+    Call<ResponseBody> uploadsignature (
+            @Part("order_id") RequestBody userId,
+            @Part("bookig_status") RequestBody booking,
+            @Part MultipartBody.Part file);
 
 }

@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/drawable/top_blue_cornors_40.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/top_cornors_40.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.2140625" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.9" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_notification.xml" value="0.2140625" />
         <entry key="app/src/main/res/layout/activity_order.xml" value="0.33" />
@@ -26,7 +26,7 @@
         <entry key="app/src/main/res/layout/activity_order_delivered.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_order_in_progress.xml" value="0.19" />
         <entry key="app/src/main/res/layout/activity_ride_completed.xml" value="0.2140625" />
-        <entry key="app/src/main/res/layout/activity_signature.xml" value="0.1984375" />
+        <entry key="app/src/main/res/layout/activity_signature.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.2140625" />
         <entry key="app/src/main/res/layout/activity_trip_detail.xml" value="0.2" />
         <entry key="app/src/main/res/layout/bottom_sheet_dialof.xml" value="0.25" />

@@ -49,6 +49,8 @@ public class HomeFragment extends Fragment {
 
     private HomeAdapter homeAdapter;
 
+    int selectedPosition = 0;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -109,18 +111,21 @@ public class HomeFragment extends Fragment {
                 int currentTabSelected= tab.getPosition();
                 if(currentTabSelected==0)
                 {
-
                     getAllRequests();
-
+                    selectedPosition = 0;
                 }else if(currentTabSelected==1)
                 {
                     getRequests();
+                    selectedPosition = 1;
                 }else if(currentTabSelected==2)
                 {
+                    getProgressRequests();
+                    selectedPosition = 2;
                 }else if(currentTabSelected==3)
                 {
+                    selectedPosition = 3;
+                    getCompletedRequests();
                 }
-
             }
 
             @Override
@@ -130,8 +135,25 @@ public class HomeFragment extends Fragment {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        if(selectedPosition==0)
+        {
+            getAllRequests();
+        }else if(selectedPosition==1)
+        {
+            getRequests();
+        }else if(selectedPosition==2)
+        {
+            getProgressRequests();
+        }else if(selectedPosition==3)
+        {
+            getCompletedRequests();
+        }
+        super.onResume();
     }
 
     public void getRequests()
@@ -141,6 +163,81 @@ public class HomeFragment extends Fragment {
         Map<String,String> map = new HashMap<>();
         map.put("driver_id",userId);
         Call<SuccessResGetOrders> call = apiInterface.getRequest(map);
+        call.enqueue(new Callback<SuccessResGetOrders>() {
+            @Override
+            public void onResponse(Call<SuccessResGetOrders> call, Response<SuccessResGetOrders> response) {
+                DataManager.getInstance().hideProgressMessage();
+                try {
+                    SuccessResGetOrders data = response.body();
+                    Log.e("data",data.success+"");
+                    if (data.success==1) {
+                        String dataResponse = new Gson().toJson(response.body());
+                        Log.e("MapMap", "EDIT PROFILE RESPONSE" + dataResponse);
+                        requestList.clear();
+                        requestList.addAll(data.getResult());
+                        homeAdapter.notifyDataSetChanged();
+                    } else if (data.success==0) {
+                        Constant.showToast(getActivity(), data.message);
+                        requestList.clear();
+                        homeAdapter.notifyDataSetChanged();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onFailure(Call<SuccessResGetOrders> call, Throwable t) {
+                call.cancel();
+                DataManager.getInstance().hideProgressMessage();
+            }
+        });
+    }
+
+    public void getProgressRequests()
+    {
+        String userId = SharedPreferenceUtility.getInstance(getActivity()).getString(Constant.USER_ID);
+        DataManager.getInstance().showProgressMessage(getActivity(), getString(R.string.please_wait));
+        Map<String,String> map = new HashMap<>();
+        map.put("driver_id",userId);
+        Call<SuccessResGetOrders> call = apiInterface.getProgressRequest(map);
+        call.enqueue(new Callback<SuccessResGetOrders>() {
+            @Override
+            public void onResponse(Call<SuccessResGetOrders> call, Response<SuccessResGetOrders> response) {
+                DataManager.getInstance().hideProgressMessage();
+                try {
+                    SuccessResGetOrders data = response.body();
+                    Log.e("data",data.success+"");
+                    if (data.success==1) {
+                        String dataResponse = new Gson().toJson(response.body());
+                        Log.e("MapMap", "EDIT PROFILE RESPONSE" + dataResponse);
+                        requestList.clear();
+                        requestList.addAll(data.getResult());
+                        homeAdapter.notifyDataSetChanged();
+                    } else if (data.success==0) {
+                        Constant.showToast(getActivity(), data.message);
+                        requestList.clear();
+                        homeAdapter.notifyDataSetChanged();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SuccessResGetOrders> call, Throwable t) {
+                call.cancel();
+                DataManager.getInstance().hideProgressMessage();
+            }
+        });
+    }
+
+    public void getCompletedRequests()
+    {
+        String userId = SharedPreferenceUtility.getInstance(getActivity()).getString(Constant.USER_ID);
+        DataManager.getInstance().showProgressMessage(getActivity(), getString(R.string.please_wait));
+        Map<String,String> map = new HashMap<>();
+        map.put("driver_id",userId);
+        Call<SuccessResGetOrders> call = apiInterface.getCompletedRequest(map);
         call.enqueue(new Callback<SuccessResGetOrders>() {
             @Override
             public void onResponse(Call<SuccessResGetOrders> call, Response<SuccessResGetOrders> response) {
@@ -201,7 +298,6 @@ public class HomeFragment extends Fragment {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onFailure(Call<SuccessResGetOrders> call, Throwable t) {
                 call.cancel();
@@ -209,7 +305,4 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
-
-
 }

@@ -4,7 +4,7 @@
     <string name="password">Enter Password</string>
     <string name="email">Enter Email</string>
     <string name="hello_worldRed"><![CDATA[<b><font color=#FF0000>Hello world!</font></b>]]></string>
-    <string name="by_continuing_i_confirm_that_i_have_read_and_agree_to_the_terms_and_conditions_and_privacy_policy">By continuing, I confirm that I have read and agree to the<font color='#1278C0'> Terms and Conditions</font> and <font color='#1278C0'>Privacy Policy.</font></string>
+    <string name="by_continuing_i_confirm_that_i_have_read_and_agree_to_the_terms_and_conditions_and_privacy_policy">By continuing, I confirm that I have read and agree to the Terms and Conditions and Privacy Policy.</string>
     <string name="you_are_been_provided_an_unique_id_and_password_by_the_admin_please_enter_those_to_move_forward">You are been provided an UNIQUE ID and PASSWORD by the admin. Please enter those to move forward.</string>
     <string name="api_key">AIzaSyCFB3_0jJQm20H2cPiVfANMjDhAmxlpUb8</string>
     <string name="completed">Completed</string>
@@ -45,5 +45,5 @@
     <string name="gallery">Gallery</string>
     <string name="permission_denied_boo">Permission Denied</string>
     <string name="order_deliver">Order Deliver</string>
-
+    <string name="clear">Clear</string>
 </resources>

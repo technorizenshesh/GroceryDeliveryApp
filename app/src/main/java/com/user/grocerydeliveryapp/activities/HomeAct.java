@@ -94,17 +94,14 @@ public class HomeAct extends AppCompatActivity {
                         } else
                         {
                             binding.tvNotificationCount.setVisibility(View.VISIBLE);
-                            binding.tvNotificationCount.setText(data.getNotification());
-
+                            binding.tvNotificationCount.setText(data.getNotification()+"");
                         }
 
                         Log.e("MapMap", "EDIT PROFILE RESPONSE" + dataResponse);
 
                     } else if (data.success == 0) {
                         showToast(HomeAct.this, data.getMessage());
-                        
                         binding.tvNotificationCount.setVisibility(View.GONE);
-                        
                     }
 
                 } catch (Exception e) {

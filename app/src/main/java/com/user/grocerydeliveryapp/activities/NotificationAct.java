@@ -58,6 +58,8 @@ public class NotificationAct extends AppCompatActivity {
 
         String userId = SharedPreferenceUtility.getInstance(NotificationAct.this).getString(USER_ID);
 
+        Log.d("TAG", "getProfile: "+userId);
+
         DataManager.getInstance().showProgressMessage(NotificationAct.this, getString(R.string.please_wait));
         Map<String,String> map = new HashMap<>();
         map.put("user_id",userId);
@@ -76,10 +78,11 @@ public class NotificationAct extends AppCompatActivity {
 
                         String dataResponse = new Gson().toJson(response.body());
 
+                        notificationList.clear();
+                        notificationList.addAll(data.getNotification());
                         binding.rvNotification.setHasFixedSize(true);
                         binding.rvNotification.setLayoutManager(new LinearLayoutManager(NotificationAct.this));
                         binding.rvNotification.setAdapter(new NotificationAdapter(NotificationAct.this,notificationList));
-
                         Log.e("MapMap", "EDIT PROFILE RESPONSE" + dataResponse);
                        
                     } else if (data.success == 0) {

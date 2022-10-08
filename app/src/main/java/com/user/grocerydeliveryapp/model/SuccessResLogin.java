@@ -48,46 +48,52 @@ public class SuccessResLogin implements Serializable {
 
         @SerializedName("id")
         @Expose
-        public String id;
+        private String id;
         @SerializedName("name")
         @Expose
-        public String name;
+        private String name;
         @SerializedName("email")
         @Expose
-        public String email;
+        private String email;
         @SerializedName("password")
         @Expose
-        public String password;
+        private String password;
         @SerializedName("dob")
         @Expose
-        public String dob;
+        private String dob;
         @SerializedName("mobile")
         @Expose
-        public String mobile;
+        private String mobile;
         @SerializedName("date_create")
         @Expose
-        public String dateCreate;
+        private String dateCreate;
         @SerializedName("default_address")
         @Expose
-        public String defaultAddress;
+        private String defaultAddress;
         @SerializedName("lat")
         @Expose
-        public String lat;
+        private String lat;
         @SerializedName("long")
         @Expose
-        public String _long;
+        private String _long;
         @SerializedName("status")
         @Expose
-        public String status;
+        private String status;
         @SerializedName("role")
         @Expose
-        public String role;
+        private String role;
         @SerializedName("country_code")
         @Expose
-        public String countryCode;
+        private String countryCode;
         @SerializedName("image")
         @Expose
-        public String image;
+        private String image;
+        @SerializedName("register_id")
+        @Expose
+        private String registerId;
+        @SerializedName("order_count")
+        @Expose
+        private Integer orderCount;
 
         public String getId() {
             return id;
@@ -201,6 +207,21 @@ public class SuccessResLogin implements Serializable {
             this.image = image;
         }
 
+        public String getRegisterId() {
+            return registerId;
+        }
+
+        public void setRegisterId(String registerId) {
+            this.registerId = registerId;
+        }
+
+        public Integer getOrderCount() {
+            return orderCount;
+        }
+
+        public void setOrderCount(Integer orderCount) {
+            this.orderCount = orderCount;
+        }
     }
 
 }

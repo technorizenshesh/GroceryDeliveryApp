@@ -24,6 +24,7 @@
         android:fontFamily="@font/montserrat_semibold"/>
 
 <androidx.cardview.widget.CardView
+    android:id="@+id/cvSignature"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/tvSignature"
@@ -40,6 +41,18 @@
 
 </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/tvClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cvSignature"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:text="@string/clear"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_12sdp" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
@@ -54,6 +67,7 @@
         android:text="@string/collect_cash"
         android:textAllCaps="false"
         android:textColor="@color/white"
+
         android:textSize="@dimen/_12sdp" />
 </RelativeLayout>
 </layout>

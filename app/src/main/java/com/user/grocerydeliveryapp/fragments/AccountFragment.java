@@ -103,7 +103,6 @@ public class AccountFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), LoginAct.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
-
                 }
                 );
 
@@ -139,6 +138,7 @@ public class AccountFragment extends Fragment {
 
                         binding.tvEmail.setText(userData.getEmail());
 
+                        binding.tvNumberCount.setText(userData.getOrderCount());
 
                     } else if (data.success == 0) {
                         showToast(getActivity(), data.getMessage());

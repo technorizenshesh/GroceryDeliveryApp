@@ -47,7 +47,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         TextView tvTimeAgo = holder.itemView.findViewById(R.id.tvQuantity);
 
-        textViewTitle.setText(notificationList.get(position).getNotificationMessage());
+        textViewTitle.setText("New Order Received");
 
         tvTimeAgo.setText(notificationList.get(position).getNotificationDateTime());
 
