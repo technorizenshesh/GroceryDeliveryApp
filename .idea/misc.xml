@@ -20,7 +20,7 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_notification.xml" value="0.2140625" />
-        <entry key="app/src/main/res/layout/activity_order.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_order.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_order_accepted.xml" value="0.2140625" />
         <entry key="app/src/main/res/layout/activity_order_accepted2.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_order_delivered.xml" value="0.21" />

@@ -36,24 +36,17 @@ import static com.user.grocerydeliveryapp.retrofit.Constant.showToast;
 public class OrderAct extends AppCompatActivity {
 
     ActivityOrderBinding binding;
-
     private SuccessResGetOrders.Result requestModel;
-
     private GroceryDeliveryInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        binding = DataBindingUtil.setContentView(this,R.layout.activity_order);
-
        apiInterface = ApiClient.getClient().create(GroceryDeliveryInterface.class);
-
        binding.header.imgHeader.setOnClickListener(v -> finish());
-
        binding.header.tvtitle.setText(R.string.orders_details);
-
        Intent in = getIntent();
-
        if (in!=null)
         {
             String result = in.getStringExtra("data");
@@ -62,7 +55,6 @@ public class OrderAct extends AppCompatActivity {
 
        binding.btnAccept.setOnClickListener(v ->
                {
-
                    new AlertDialog.Builder(OrderAct.this)
                            .setTitle(getString(R.string.accept))
                            .setMessage(getString(R.string.wanna_accept))
@@ -78,30 +70,23 @@ public class OrderAct extends AppCompatActivity {
                            .setNegativeButton(android.R.string.no, null)
                            .setIcon(android.R.drawable.ic_dialog_alert)
                            .show();
-
                }
                );
 
         binding.tvOrderId.setText("Order ID- "+requestModel.getBookingId());
         binding.tvMyOrder.setText("Order ID- "+requestModel.getBookingId());
-
         binding.tvFromLocation.setText(requestModel.getCompanyAddress());
         binding.tvtoLocation.setText(requestModel.getUserAddress());
-
         binding.tvSuperMarket.setText(requestModel.getCompanyName());
         binding.tvShopAddress.setText(requestModel.getCompanyAddress());
-
         binding.tvShopName.setText(requestModel.getProductName());
         binding.tvQuantity.setText(requestModel.getPackaging());
-
         Glide.with(this)
                 .load(requestModel.getProductImage())
                 .into(binding.ivProduct);
-
         binding.tvCustomerName.setText(requestModel.getUserDetails().getName());
         binding.tvCustomerAddress.setText(requestModel.getUserAddress());
         binding.tvAmount.setText(requestModel.getPrice());
-
     }
 
     public void acceptOrder(String strEmail)
@@ -115,22 +100,14 @@ public class OrderAct extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 DataManager.getInstance().hideProgressMessage();
-
                 try {
 //                    SuccessResAddComment data = response.body();
-
                     JSONObject jsonObject = new JSONObject(response.body().string());
-
                     String data = jsonObject.getString("status");
-
                     String message = jsonObject.getString("message");
-
                     if (data.equals("1")) {
-
                         String dataResponse = new Gson().toJson(response.body());
-
                         Log.e("MapMap", "EDIT PROFILE RESPONSE" + dataResponse);
-
                         finish();
 
                     } else if (data.equals("0")) {
@@ -141,9 +118,7 @@ public class OrderAct extends AppCompatActivity {
                     Log.d("TAG", "onResponse: "+e);
                     e.printStackTrace();
                 }
-
             }
-
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 call.cancel();

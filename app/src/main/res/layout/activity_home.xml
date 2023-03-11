@@ -17,7 +17,6 @@
             android:background="@color/app_color"
             xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
             <RelativeLayout
                 android:layout_width="@dimen/_27sdp"
                 android:layout_height="@dimen/_27sdp"
